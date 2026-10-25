@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Duke AI Safety Interest Form</title>
+<meta name="description" content="A new group at Duke working on the core alignment problem. Sign up for the intro fellowship, reading groups, research projects, talks and socials.">
+<meta property="og:title" content="Join Duke AI Safety">
+<meta property="og:description" content="Tell us what you'd like to get involved with. Takes about three minutes.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#FBEBDF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23FBEBDF'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23F3A983'/%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%23012169' stroke-width='1.5'/%3E%3C/svg%3E">
+<script>
+  // Play the opening loader unless the visitor prefers reduced motion
+  try { if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("intro"); } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+/* Layout: two-color print. Duke-blue ink on peach paper, a soft peach sun behind the title,
+   then one 620px column of hairline-divided sections. Single deliberate light theme. */
+:root {
+  --paper: #FBEBDF;      /* peach stock */
+  --paper-deep: #F7DAC6; /* selected rows, hover */
+  --sun: #F3A983;        /* the sun */
+  --ink: #012169;        /* Duke blue, used for all text */
+  --ink-soft: #46578C;   /* secondary text */
+  --line: #D9C9C6;       /* hairlines */
+  --line-strong: #8A90AA;/* control outlines */
+  --danger: #A6352B;
+  --display: "Instrument Serif", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --text: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--paper); }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 18px/1.55 var(--text);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+[hidden] { display: none !important; }
+::selection { background: var(--ink); color: var(--paper); }
+
+.wrap {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  padding-left: max(22px, env(safe-area-inset-left, 0px));
+  padding-right: max(22px, env(safe-area-inset-right, 0px));
+}
+
+/* Masthead */
+.masthead { position: relative; overflow: hidden; }
+.sun {
+  position: absolute;
+  top: -150px;
+  right: max(-140px, calc(50% - 620px));
+  width: 560px;
+  max-width: 120vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--sun) 0%, rgba(243, 169, 131, .62) 34%, rgba(243, 169, 131, .18) 58%, rgba(251, 235, 223, 0) 71%);
+  pointer-events: none;
+}
+.sun::after {
+  content: "";
+  position: absolute;
+  inset: 19%;
+  border-radius: 50%;
+  border: 1px solid rgba(1, 33, 105, .22);
+}
+.masthead .wrap { padding-block: calc(56px + env(safe-area-inset-top, 0px)) 30px; display: grid; gap: 22px; }
+.eyebrow {
+  margin: 0;
+  font: 600 12.5px/1.3 var(--text);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+.eyebrow span { font-weight: 400; color: var(--ink-soft); letter-spacing: .14em; }
+.eyebrow span::before { content: "·"; margin: 0 .5em; }
+@media (max-width: 520px) {
+  .eyebrow span { display: block; margin-top: 4px; }
+  .eyebrow span::before { content: none; }
+}
+h1 {
+  margin: 0;
+  font: 400 clamp(54px, 13vw, 88px)/.94 var(--display);
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+h1 em {
+  font-style: normal;
+  text-decoration: underline;
+  text-decoration-color: var(--sun);
+  text-decoration-thickness: .09em;
+  text-underline-offset: .1em;
+  text-decoration-skip-ink: none;
+}
+.lede strong { font-weight: 600; }
+.lede { margin: 0; max-width: 52ch; font-size: 19.5px; line-height: 1.5; }
+.facts { margin: 0; color: var(--ink-soft); font-size: 16px; }
+.facts span + span::before { content: "·"; margin: 0 .55em; }
+.rule { height: 1px; background: var(--ink); opacity: .9; }
+
+/* Sections */
+form, .done { padding-block: 4px calc(72px + env(safe-area-inset-bottom, 0px)); }
+.section { display: grid; gap: 34px; padding-block: 44px; }
+.section:first-child { padding-top: 18px; }
+.section.tail { padding-top: 0; }
+.section-head { display: grid; gap: 6px; }
+h2 {
+  margin: 0;
+  font: 400 clamp(36px, 7vw, 44px)/1.02 var(--display);
+  letter-spacing: -.01em;
+}
+.section-head p { margin: 0; color: var(--ink-soft); font-size: 17px; }
+.section-head .kicker, .kicker {
+  margin: 0 0 4px;
+  font-style: normal;
+  font: 600 12px/1.3 var(--text); letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Fields */
+.field { display: grid; gap: 14px; min-width: 0; margin: 0; padding: 0; border: 0; }
+legend.label { margin-bottom: 14px; }
+.label {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  padding: 0;
+  font-weight: 500; font-size: 18.5px; line-height: 1.35;
+}
+.opt { font-weight: 400; font-size: 15px; letter-spacing: .02em; color: var(--ink-soft); }
+.help { margin: -8px 0 0; color: var(--ink-soft); font-size: 16px; }
+.err { margin: 0; color: var(--danger); font-size: 15.5px; }
+
+input[type="text"], input[type="email"] {
+  width: 100%;
+  font: 400 20px/1.3 var(--text);
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  padding: 8px 2px 10px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+textarea {
+  width: 100%;
+  min-height: 120px;
+  resize: vertical;
+  font: 400 18px/1.5 var(--text);
+  color: var(--ink);
+  background: rgba(255, 255, 255, .28);
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  padding: 12px 14px;
+  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+::placeholder { color: var(--ink-soft); opacity: .6; }
+input[type="text"]:focus, input[type="email"]:focus { outline: none; border-bottom-color: var(--ink); box-shadow: 0 1px 0 0 var(--ink); }
+textarea:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); background: rgba(255, 255, 255, .45); }
+.invalid input[type="text"], .invalid input[type="email"] { border-bottom-color: var(--danger); }
+.invalid textarea { border-color: var(--danger); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+@media (max-width: 560px) { .pair { grid-template-columns: 1fr; gap: 34px; } }
+
+/* Pills */
+.chips { display: flex; flex-wrap: wrap; gap: 9px; }
+.chip { position: relative; display: inline-flex; }
+.chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.chip span {
+  padding: 7px 17px 8px;
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  font-size: 17px; line-height: 1.3;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.chip input:hover + span { border-color: var(--ink); }
+.chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 3px; }
+.invalid .chip span { border-color: var(--danger); }
+
+/* Familiarity: a four-stop spectrum */
+.scale { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-top: 4px; }
+.scale::before {
+  content: ""; position: absolute; left: 10px; right: calc(25% - 11px); top: 14px;
+  height: 1px; background: var(--line-strong);
+}
+.step { position: relative; display: grid; justify-items: start; align-content: start; text-align: left; padding-right: 10px; cursor: pointer; }
+.step input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.dot {
+  position: relative; z-index: 1;
+  width: 21px; height: 21px; border-radius: 50%;
+  border: 1px solid var(--ink); background: var(--paper);
+  transition: background-color .2s ease, box-shadow .2s ease;
+}
+.step b { margin-top: 12px; font-weight: 500; font-size: 17px; line-height: 1.25; }
+.step small { margin-top: 3px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.35; }
+.step input:hover ~ .dot { background: var(--paper-deep); }
+.step input:checked ~ .dot { background: var(--ink); box-shadow: 0 0 0 5px var(--paper-deep); }
+.step input:checked ~ b { font-weight: 600; }
+.step input:focus-visible ~ .dot { outline: 2px solid var(--ink); outline-offset: 4px; }
+.invalid .dot { border-color: var(--danger); }
+@media (max-width: 520px) {
+  .scale { grid-template-columns: 1fr; gap: 20px; }
+  .scale::before { left: 10px; right: auto; top: 14px; bottom: 10px; width: 1px; height: auto; }
+  .step { grid-template-columns: 21px minmax(0, 1fr); column-gap: 16px; justify-items: start; text-align: left; padding: 0; }
+  .dot { grid-row: 1 / span 2; margin-top: 1px; }
+  .step b { margin-top: 0; }
+}
+
+/* Activities: a hairline list */
+.options { display: grid; gap: 2px; margin-inline: -14px; }
+.option {
+  position: relative;
+  display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 18px;
+  padding: 18px 14px 19px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .2s ease;
+}
+.option input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.box {
+  width: 18px; height: 18px; margin-top: 7px;
+  display: grid; place-items: center;
+  border: 1px solid var(--ink); border-radius: 2px;
+  transition: background-color .2s ease;
+}
+.option input:checked ~ .box { background: var(--ink); }
+.option input:checked ~ .box::after {
+  content: ""; width: 9px; height: 5px; margin-top: -2px;
+  border-left: 1.5px solid var(--paper); border-bottom: 1.5px solid var(--paper);
+  transform: rotate(-45deg);
+}
+.option:hover { background: rgba(247, 218, 198, .55); }
+.option:has(input:checked) { background: var(--paper-deep); }
+.option input:focus-visible ~ .box { outline: 2px solid var(--ink); outline-offset: 3px; }
+.option strong { display: block; font: 400 25px/1.15 var(--display); }
+.option small { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 16px; line-height: 1.45; }
+.option.quiet strong { font-size: 21px; }
+.invalid .box { border-color: var(--danger); }
+
+/* Availability */
+.grid-scroll { overflow-x: auto; margin-inline: -4px; }
+.avail { border-collapse: separate; border-spacing: 5px; width: 100%; min-width: 340px; }
+.avail thead th {
+  padding: 0 0 2px;
+  font: 600 11.5px/1 var(--text); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-soft); text-align: center;
+}
+.avail tbody th { padding-right: 10px; text-align: left; white-space: nowrap; font-weight: 500; font-size: 16.5px; }
+.avail tbody th small { display: block; font-weight: 400; font-size: 13.5px; color: var(--ink-soft); }
+.slot { position: relative; display: block; height: 40px; }
+.slot input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.slot span {
+  display: block; height: 100%;
+  border: 1px solid var(--line-strong); border-radius: 999px;
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.slot input:hover + span { border-color: var(--ink); background: rgba(247, 218, 198, .6); }
+.slot input:checked + span { background: var(--ink); border-color: var(--ink); }
+.slot input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* Submit */
+.submit-row { display: grid; gap: 18px; padding-top: 6px; }
+.honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+button[type="submit"] {
+  justify-self: start;
+  display: inline-flex; align-items: center; gap: 14px;
+  font: 500 19px/1 var(--text);
+  color: var(--paper);
+  background: var(--ink);
+  border: 0; border-radius: 999px;
+  padding: 17px 30px 18px 34px;
+  cursor: pointer;
+  transition: gap .2s ease, background-color .2s ease;
+}
+button[type="submit"] .arrow { font-family: var(--display); font-size: 24px; line-height: .6; transition: transform .2s ease; }
+button[type="submit"]:hover .arrow { transform: translateX(4px); }
+button[type="submit"]:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+button[type="submit"]:disabled { opacity: .6; cursor: progress; }
+@media (max-width: 560px) { button[type="submit"] { justify-self: stretch; justify-content: center; } }
+.fine { margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 54ch; }
+.form-error {
+  margin: 0; padding: 12px 16px;
+  border: 1px solid var(--danger); border-radius: 3px;
+  color: var(--danger);
+}
+
+/* Done */
+.done .section { gap: 18px; padding-block: 64px; }
+.done h2 { font-size: clamp(46px, 10vw, 64px); }
+.done p { margin: 0; max-width: 48ch; font-size: 19px; }
+
+/* Opening loader. Timeline: sun rises (0–1s), a satellite leads the orbit as it draws (0.15–1.5s),
+   the name assembles (0.35–1.4s), the counter runs to 100%, then the sun swells and dissolves into the page (2.1–2.9s).
+   Exit is timed in CSS, so the page never stays covered even if the script fails. */
+.loader { display: none; }
+.intro .loader {
+  position: fixed; inset: 0; z-index: 50;
+  display: grid; place-items: center;
+  background: var(--paper);
+  padding: env(safe-area-inset-top, 0px) max(22px, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(22px, env(safe-area-inset-left, 0px));
+  cursor: pointer;
+  animation: loader-out .6s cubic-bezier(.4, 0, .2, 1) 2.4s forwards;
+}
+.loader-inner { display: grid; justify-items: center; gap: 30px; text-align: center; }
+.orb {
+  position: relative; width: 200px; height: 200px; max-width: 100%;
+  animation: orb-swell .8s cubic-bezier(.55, 0, .75, .25) 2.1s forwards;
+}
+.orb-sun {
+  position: absolute; inset: 22px; border-radius: 50%;
+  background: radial-gradient(circle, var(--sun) 0%, rgba(243, 169, 131, .72) 36%, rgba(243, 169, 131, .2) 60%, rgba(251, 235, 223, 0) 71%);
+  animation: sun-rise 1s cubic-bezier(.2, .8, .2, 1) .05s both, sun-breathe 2.2s ease-in-out 1.05s infinite;
+}
+.orbit { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.orbit-ring {
+  fill: none; stroke: var(--ink); stroke-width: 1; stroke-opacity: .6;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 578; stroke-dashoffset: 578;
+  transform: rotate(-90deg); transform-origin: 100px 100px;
+  animation: ring-draw 1.35s cubic-bezier(.65, 0, .35, 1) .15s forwards;
+}
+.sat { transform-origin: 100px 100px; animation: sat-lead 1.35s cubic-bezier(.65, 0, .35, 1) .15s both, sat-orbit 1.7s linear 1.5s infinite; }
+.sat circle { fill: var(--ink); }
+.loader-name {
+  margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .24em;
+  font: 400 clamp(44px, 11vw, 64px)/1 var(--display); letter-spacing: -.015em;
+  animation: text-out .4s ease 2.05s forwards;
+}
+.loader-name span { display: inline-block; animation: word-rise .9s cubic-bezier(.2, .8, .2, 1) both; }
+.loader-name span:nth-child(1) { animation-delay: .35s; }
+.loader-name span:nth-child(2) { animation-delay: .5s; }
+.loader-name span:nth-child(3) { animation-delay: .65s; }
+.loader-status {
+  margin: -10px 0 0; display: flex; align-items: baseline; gap: 14px;
+  font: 400 18px/1 var(--text); letter-spacing: .04em; color: var(--ink-soft);
+  animation: fade-in .6s ease .85s both, text-out .4s ease 2.05s forwards;
+}
+.dots span { animation: blink 1.2s ease-in-out infinite; }
+.dots span:nth-child(2) { animation-delay: .2s; }
+.dots span:nth-child(3) { animation-delay: .4s; }
+.pct { min-width: 4ch; text-align: right; color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums lining-nums; }
+
+/* The page arrives as the loader leaves */
+.intro .masthead .sun { animation: sun-settle 1.3s cubic-bezier(.2, .8, .2, 1) 2.35s both; }
+.intro .masthead .wrap > * { animation: rise .95s cubic-bezier(.2, .8, .2, 1) both; }
+.intro .masthead .wrap > :nth-child(1) { animation-delay: 2.5s; }
+.intro .masthead .wrap > :nth-child(2) { animation-delay: 2.6s; }
+.intro .masthead .wrap > :nth-child(3) { animation-delay: 2.75s; }
+.intro .masthead .wrap > :nth-child(4) { animation-delay: 2.85s; }
+.intro main { animation: fade-in .9s ease 2.95s both; }
+
+@keyframes loader-out { to { opacity: 0; visibility: hidden; } }
+@keyframes orb-swell { 60% { opacity: 1; } to { transform: scale(6.5); opacity: 0; } }
+@keyframes sun-rise { from { opacity: 0; transform: translateY(26px) scale(.35); } to { opacity: 1; transform: none; } }
+@keyframes sun-breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes ring-draw { to { stroke-dashoffset: 0; } }
+@keyframes sat-lead { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes sat-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes word-rise { from { opacity: 0; transform: translateY(.5em); filter: blur(8px); } to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes text-out { to { opacity: 0; transform: translateY(-10px); filter: blur(4px); } }
+@keyframes blink { 0%, 100% { opacity: .15; } 40% { opacity: 1; } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+@keyframes sun-settle { from { opacity: 0; transform: scale(.55); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+  .loader { display: none !important; }
+  .intro *, .intro *::before, .intro *::after { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="orb">
+      <div class="orb-sun"></div>
+      <svg class="orbit" viewBox="0 0 200 200" focusable="false">
+        <circle class="orbit-ring" cx="100" cy="100" r="92"></circle>
+        <g class="sat"><circle cx="100" cy="8" r="4.5"></circle></g>
+      </svg>
+    </div>
+    <p class="loader-name"><span>Duke</span><span>AI</span><span>Safety</span></p>
+    <p class="loader-status"><span>loading<span class="dots"><span>.</span><span>.</span><span>.</span></span></span><span class="pct" id="pct">0%</span></p>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="sun" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Duke AI Safety</p>
+    <h1>Help make AI go <em>well.</em></h1>
+    <p class="lede"><strong>AI capabilities are advancing far faster than our ability to make these systems safe.</strong> We're a new group at Duke working on the core alignment problem: making AI systems safer and aligned with human values. We have big goals. If you want to work on arguably the most important problem of our time, alongside some of the sharpest people on campus, fill out this form.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form id="interest-form" novalidate>
+
+    <section class="section" aria-labelledby="h-about">
+      <div class="section-head">
+        <h2 id="h-about">About you</h2>
+      </div>
+
+      <div class="pair">
+        <div class="field" data-field="full_name">
+          <label class="label" for="full_name">Name</label>
+          <input type="text" id="full_name" name="full_name" autocomplete="name" maxlength="120">
+          <p class="err" hidden></p>
+        </div>
+        <div class="field" data-field="email">
+          <label class="label" for="email">Duke email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="netid@duke.edu" maxlength="254" spellcheck="false" autocapitalize="off">
+          <p class="err" hidden></p>
+        </div>
+      </div>
+
+      <fieldset class="field" data-field="year">
+        <legend class="label">Year</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" id="year-1" name="year" value="First-year"><span>First-year</span></label>
+          <label class="chip"><input type="radio" id="year-2" name="year" value="Sophomore"><span>Sophomore</span></label>
+          <label class="chip"><input type="radio" id="year-3" name="year" value="Junior"><span>Junior</span></label>
+          <label class="chip"><input type="radio" id="year-4" name="year" value="Senior"><span>Senior</span></label>
+          <label class="chip"><input type="radio" id="year-5" name="year" value="Master's student"><span>Master's</span></label>
+          <label class="chip"><input type="radio" id="year-6" name="year" value="PhD student"><span>PhD</span></label>
+          <label class="chip"><input type="radio" id="year-7" name="year" value="Postdoc, faculty or staff"><span>Postdoc, faculty or staff</span></label>
+          <label class="chip"><input type="radio" id="year-8" name="year" value="Other"><span>Other</span></label>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+
+      <div class="field" data-field="major">
+        <label class="label" for="major">Major</label>
+        <input type="text" id="major" name="major" maxlength="200">
+        <p class="err" hidden></p>
+      </div>
+
+      <fieldset class="field" data-field="backgrounds">
+        <legend class="label">Background</legend>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" id="bg-1" name="backgrounds" value="CS / ML"><span>CS / ML</span></label>
+          <label class="chip"><input type="checkbox" id="bg-2" name="backgrounds" value="Math / Stats"><span>Math / Stats</span></label>
+          <label class="chip"><input type="checkbox" id="bg-3" name="backgrounds" value="Engineering"><span>Engineering</span></label>
+          <label class="chip"><input type="checkbox" id="bg-4" name="backgrounds" value="Philosophy / Ethics"><span>Philosophy / Ethics</span></label>
+          <label class="chip"><input type="checkbox" id="bg-5" name="backgrounds" value="Public policy / Law"><span>Public policy / Law</span></label>
+          <label class="chip"><input type="checkbox" id="bg-6" name="backgrounds" value="Economics"><span>Economics</span></label>
+          <label class="chip"><input type="checkbox" id="bg-7" name="backgrounds" value="Other"><span>Other</span></label>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+
+      <fieldset class="field" data-field="familiarity">
+        <legend class="label">Familiarity with AI safety</legend>
+        <div class="scale">
+          <label class="step"><input type="radio" id="fam-1" name="familiarity" value="New to it"><span class="dot"></span><b>New to it</b></label>
+          <label class="step"><input type="radio" id="fam-2" name="familiarity" value="Read a little"><span class="dot"></span><b>Read a little</b></label>
+          <label class="step"><input type="radio" id="fam-3" name="familiarity" value="Read a lot"><span class="dot"></span><b>Read a lot</b></label>
+          <label class="step"><input type="radio" id="fam-4" name="familiarity" value="Done research or work in it"><span class="dot"></span><b>Done research</b></label>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+    </section>
+
+    <section class="section" aria-labelledby="h-interests">
+      <div class="section-head">
+        <h2 id="h-interests">Interests</h2>
+      </div>
+
+      <fieldset class="field" data-field="interests">
+        <legend class="label" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Activities</legend>
+        <div class="options">
+          <label class="option"><input type="checkbox" id="int-1" name="interests" value="Intro fellowship"><span class="box"></span><span><strong>Intro fellowship</strong></span></label>
+          <label class="option"><input type="checkbox" id="int-2" name="interests" value="Technical alignment"><span class="box"></span><span><strong>Technical alignment</strong></span></label>
+          <label class="option"><input type="checkbox" id="int-3" name="interests" value="Governance &amp; policy"><span class="box"></span><span><strong>Governance &amp; policy</strong></span></label>
+          <label class="option"><input type="checkbox" id="int-4" name="interests" value="Research projects"><span class="box"></span><span><strong>Research projects</strong></span></label>
+          <label class="option"><input type="checkbox" id="int-5" name="interests" value="Talks &amp; speaker events"><span class="box"></span><span><strong>Talks &amp; speakers</strong></span></label>
+          <label class="option"><input type="checkbox" id="int-6" name="interests" value="Socials"><span class="box"></span><span><strong>Socials</strong></span></label>
+          <label class="option quiet"><input type="checkbox" id="int-7" name="interests" value="Mailing list only"><span class="box"></span><span><strong>Just the mailing list</strong></span></label>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+    </section>
+
+    <section class="section" id="fellowship" aria-labelledby="h-fellowship" hidden>
+      <div class="section-head">
+        <h2 id="h-fellowship">Fellowship</h2>
+      </div>
+
+      <fieldset class="field" data-field="fellowship_track">
+        <legend class="label">Track</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" id="track-1" name="fellowship_track" value="Technical"><span>Technical</span></label>
+          <label class="chip"><input type="radio" id="track-2" name="fellowship_track" value="Governance"><span>Governance</span></label>
+          <label class="chip"><input type="radio" id="track-3" name="fellowship_track" value="Not sure yet"><span>Not sure yet</span></label>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+
+      <div class="field" data-field="fellowship_why">
+        <label class="label" for="fellowship_why">Why</label>
+        <textarea id="fellowship_why" name="fellowship_why" maxlength="2000"></textarea>
+        <p class="err" hidden></p>
+      </div>
+
+      <div class="field" data-field="fellowship_prior">
+        <label class="label" for="fellowship_prior">What you've read or done so far</label>
+        <textarea id="fellowship_prior" name="fellowship_prior" maxlength="2000"></textarea>
+        <p class="err" hidden></p>
+      </div>
+
+      <fieldset class="field" data-field="availability">
+        <legend class="label">When you're free</legend>
+        <div class="grid-scroll">
+          <table class="avail">
+            <thead>
+              <tr><td></td><th scope="col">Mon</th><th scope="col">Tue</th><th scope="col">Wed</th><th scope="col">Thu</th><th scope="col">Fri</th><th scope="col">Sat</th><th scope="col">Sun</th></tr>
+            </thead>
+            <tbody id="avail-body"></tbody>
+          </table>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+
+      <fieldset class="field" data-field="can_commit">
+        <legend class="label">Can you commit weekly</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" id="commit-1" name="can_commit" value="Yes"><span>Yes</span></label>
+          <label class="chip"><input type="radio" id="commit-2" name="can_commit" value="Not sure"><span>Not sure</span></label>
+          <label class="chip"><input type="radio" id="commit-3" name="can_commit" value="No"><span>No</span></label>
+        </div>
+        <p class="err" hidden></p>
+      </fieldset>
+    </section>
+
+    <section class="section tail">
+
+
+      <div class="field" data-field="notes">
+        <label class="label" for="notes">Anything else</label>
+        <textarea id="notes" name="notes" maxlength="2000"></textarea>
+        <p class="err" hidden></p>
+      </div>
+
+      <div class="honey" aria-hidden="true">
+        <label for="website">Leave this empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="submit-row">
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <button type="submit" id="submit"><span class="btn-label">Submit</span><span class="arrow" aria-hidden="true">&rarr;</span></button>
+      </div>
+    </section>
+  </form>
+
+  <div class="done" id="done" hidden>
+    <section class="section" tabindex="-1" id="done-section">
+      <h2 id="done-title">Thank you.</h2>
+      <p>We'll be in touch.</p>
+    </section>
+  </div>
+</main>
+
+
+<script>
+(() => {
+  const SUPABASE_URL = "https://zbviribdtnjoburmwhol.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_EeTodIOeF5bO8TpOPzWF5g_KUbF_xW5";
+  const MAILING = "Mailing list only";
+  const FELLOWSHIP = "Intro fellowship";
+  const DUKE_EMAIL = /^[^@\s]+@([a-z0-9-]+\.)*duke\.edu$/i;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const form = document.getElementById("interest-form");
+  const fellowship = document.getElementById("fellowship");
+  const formError = document.getElementById("form-error");
+  const submitBtn = document.getElementById("submit");
+  const submitLabel = submitBtn.querySelector(".btn-label");
+
+  // Loader: count to 100% in step with the CSS timeline; a click or Escape skips it
+  const root = document.documentElement;
+  const loader = document.getElementById("loader");
+  if (root.classList.contains("intro") && loader) {
+    const pct = document.getElementById("pct");
+    const start = performance.now();
+    const delay = 250, duration = 1700;
+    const tick = now => {
+      const t = Math.min(1, Math.max(0, (now - start - delay) / duration));
+      const eased = 1 - Math.pow(1 - t, 3);
+      pct.textContent = `${Math.min(100, Math.round(eased * 100))}%`;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    const skip = () => root.classList.remove("intro");
+    loader.addEventListener("click", skip);
+    window.addEventListener("keydown", e => { if (e.key === "Escape") skip(); });
+  }
+
+  // Availability grid
+  const days = [["Mon", "Monday"], ["Tue", "Tuesday"], ["Wed", "Wednesday"], ["Thu", "Thursday"], ["Fri", "Friday"], ["Sat", "Saturday"], ["Sun", "Sunday"]];
+  const blocks = [["afternoon", "Afternoon"], ["evening", "Evening"]];
+  const tbody = document.getElementById("avail-body");
+  for (const [key, label] of blocks) {
+    const tr = document.createElement("tr");
+    const th = document.createElement("th");
+    th.scope = "row";
+    th.textContent = label;
+    tr.appendChild(th);
+    for (const [short, long] of days) {
+      const td = document.createElement("td");
+      td.innerHTML = `<label class="slot"><input type="checkbox" id="slot-${short.toLowerCase()}-${key}" name="availability" value="${short} ${key}" aria-label="${long} ${key}"><span></span></label>`;
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+
+  const checked = name => [...form.querySelectorAll(`input[name="${name}"]:checked`)].map(i => i.value);
+  const picked = name => { const el = form.querySelector(`input[name="${name}"]:checked`); return el ? el.value : null; };
+  const text = name => form.elements[name].value.trim();
+  const orNull = s => (s ? s : null);
+
+  function setError(key, msg) {
+    const field = form.querySelector(`[data-field="${key}"]`);
+    if (!field) return;
+    const err = field.querySelector(".err");
+    field.classList.toggle("invalid", Boolean(msg));
+    err.textContent = msg || "";
+    err.hidden = !msg;
+  }
+
+  function syncFellowship() {
+    fellowship.hidden = !checked("interests").includes(FELLOWSHIP);
+  }
+
+  form.addEventListener("change", e => {
+    const t = e.target;
+    if (t.name === "interests" && t.checked) {
+      // "Mailing list only" excludes the other activities, and vice versa
+      form.querySelectorAll('input[name="interests"]').forEach(i => {
+        if (i !== t && (t.value === MAILING || i.value === MAILING)) i.checked = false;
+      });
+    }
+    if (t.name === "interests") syncFellowship();
+    const field = t.closest("[data-field]");
+    if (field && field.classList.contains("invalid")) setError(field.dataset.field, "");
+  });
+
+  form.addEventListener("input", e => {
+    const field = e.target.closest("[data-field]");
+    if (field && field.classList.contains("invalid")) setError(field.dataset.field, "");
+  });
+
+  function validate() {
+    const errors = {};
+    if (!text("full_name")) errors.full_name = "Required.";
+    const email = text("email");
+    if (!email) errors.email = "Required.";
+    else if (!DUKE_EMAIL.test(email)) errors.email = "Use your @duke.edu email.";
+    if (!picked("year")) errors.year = "Required.";
+    if (!text("major")) errors.major = "Required. Undeclared is fine.";
+    if (!picked("familiarity")) errors.familiarity = "Required.";
+    const interests = checked("interests");
+    if (!interests.length) errors.interests = "Pick at least one.";
+    if (interests.includes(FELLOWSHIP)) {
+      if (!picked("fellowship_track")) errors.fellowship_track = "Required.";
+      if (!text("fellowship_why")) errors.fellowship_why = "Required.";
+    }
+    return errors;
+  }
+
+  function buildPayload() {
+    const interests = checked("interests");
+    const fellow = interests.includes(FELLOWSHIP);
+    return {
+      full_name: text("full_name"),
+      email: text("email").toLowerCase(),
+      year: picked("year"),
+      major: text("major"),
+      backgrounds: checked("backgrounds"),
+      familiarity: picked("familiarity"),
+      interests,
+      fellowship_track: fellow ? picked("fellowship_track") : null,
+      fellowship_why: fellow ? orNull(text("fellowship_why")) : null,
+      fellowship_prior: fellow ? orNull(text("fellowship_prior")) : null,
+      availability: fellow ? checked("availability") : [],
+      can_commit: fellow ? picked("can_commit") : null,
+      notes: orNull(text("notes")),
+    };
+  }
+
+  function focusField(key) {
+    const field = form.querySelector(`[data-field="${key}"]`);
+    if (!field) return;
+    field.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    const target = field.querySelector("input, textarea");
+    if (target) target.focus({ preventScroll: true });
+  }
+
+  function showDone(data) {
+    const first = data.full_name.split(/\s+/)[0];
+    const title = document.getElementById("done-title");
+    title.textContent = first ? `Thank you, ${first}.` : "Thank you.";
+    form.hidden = true;
+    document.getElementById("done").hidden = false;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    document.getElementById("done-section").focus({ preventScroll: true });
+  }
+
+  function showFormError(msg) {
+    formError.textContent = msg;
+    formError.hidden = false;
+  }
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    formError.hidden = true;
+
+    const data = buildPayload();
+    if (form.elements.website.value) { showDone(data); return; } // bot trap
+
+    const errors = validate();
+    form.querySelectorAll("[data-field]").forEach(f => setError(f.dataset.field, errors[f.dataset.field]));
+    const firstError = Object.keys(errors)[0];
+    if (firstError) { focusField(firstError); return; }
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = "Submitting";
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/interest_responses`, {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, "Content-Type": "application/json", Prefer: "return=minimal" },
+        body: JSON.stringify(data),
+      });
+      if (res.ok) { showDone(data); return; }
+      let body = {};
+      try { body = await res.json(); } catch (_) {}
+      if (res.status === 409 || body.code === "23505") {
+        setError("email", "Already signed up.");
+        focusField("email");
+      } else {
+        showFormError("Something went wrong. Try again in a minute.");
+      }
+    } catch (_) {
+      showFormError("No connection. Try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = "Submit";
+    }
+  });
+})();
+</script>
+</body>
+</html>
